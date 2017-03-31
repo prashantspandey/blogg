@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+<html>
+<head>
+    <title>{% block head_title %} {{results_for}} {% endblock %}</title>
+
+</head>
+<body>
+
+{% block content %}
+<div class="page-header">
+  <h1 class="text-center">Search Results <small>{{results_for}}</small></h1>
+</div>
+    {% if result.exists%}
+        {% for res in result %}
+
+        <div class="row">
+  <div class="jumbotron">
+
+      <h3><a href="{{res.get_absolute_url}}">{{res.title}}</a> </h3>
+        <p>{{ res.content | linebreaks | truncatechars:250 }}</p>
+        <p><a href="{{ res.get_absolute_url }}" class="btn btn-primary" role="button">View Full Post</a>
+      </div>
+    </div>
+        {% endfor %}
+    {% else %}
+        Sorry, Result not found
+    {% endif %}
+{% endblock %}
+</body>
+
+
+
+
+</html>

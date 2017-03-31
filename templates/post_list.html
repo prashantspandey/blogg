@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica+SC|Kalam" rel="stylesheet">
+    <h1 class="text-center">
+    {{title}}
+    </h1><br/><br/>
+
+    {% for obj in object_list %}
+<div class="row">
+
+
+  <div class="jumbotron">
+     <div class="container">
+
+        <h2><a href="{{ obj.get_absolute_url }}">
+            {{obj.title}} | <small>{{obj.publish}}</small> </a></h2>
+          <p>By: {{obj.user}}</p>
+      <div class="caption">
+          {% if obj.draft %}<h3>Draft</h3> {% if obj.publish > today %}
+          <h3> Future Post </h3> {%endif%} {% endif %}
+        <p class="text-center">  {{obj.content | linebreaks | truncatechars:200}}</p>
+        <p><a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">View</a> </p>
+          <hr class="half-rule"/>
+      </div>
+    </div>
+  </div>
+  </div>
+
+    {% endfor %}
+
+<div class="pagination" >
+    <span class="step-links">
+        {% if object_list.has_previous %}
+        <a href="?{{page_request_var}}={{object_list.previous_page_number}}">Previous</a>
+        {% endif %}
+    <span class="current">
+        Page{{object_list.number}} of {{object_list.paginator.num_pages}}
+    </span>
+        {% if object_list.has_next %}
+        <a href="?{{page_request_var}}={{object_list.next_page_number}}">Next</a>
+        {% endif %}
+
+    </span>
+
+</div>
+
+{% endblock content %}

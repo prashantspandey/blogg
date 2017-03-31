@@ -1,0 +1,61 @@
+.thumbnail img {
+    height:250px;
+    width:250px;
+}
+
+.half-rule {
+    margin-left: 0;
+    text-align: left;
+    width: 100%;
+ }
+
+<style>
+      body {
+        font-family: 'Kalam', cursive;
+        font-family: 'IM Fell DW Pica SC', serif;
+      }
+</style>
+
+
+
+h1 {
+    font-size: 250%;
+}
+
+h2 {
+    font-size: 200%;
+}
+
+p {
+    font-size: 150%;
+}
+
+.nav-tabs{
+  background-color:#161616;
+}
+.tab-content{
+    background-color:#303136;
+    color:#fff;
+    padding:1px
+}
+.nav-tabs > li > a{
+  border: medium none;
+}
+.nav-tabs > li > a:hover{
+  background-color: #303136 !important;
+    border: medium none;
+    border-radius: 0;
+    color:#BDBDBD;
+}
+li a {
+    color:green;
+}
+
+body {
+    background: white url("background.jpg")
+
+}
+.jumbotron {
+   background: rgb(200, 54, 54); /* This is for ie8 and below */
+   background: rgba(200, 54, 54, 0.6);
+}

@@ -1,0 +1,70 @@
+{% load staticfiles %}
+
+<html lang="en">
+<html>
+<head>
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class="{% if clickedhome%}active{%endif%}"><a href="{%url 'list'%}">Home</a></li>
+ {% if request.user.is_superuser or request.user.is_staff %} <li role="presentation" class="{% if clickedcreate%}active{%endif%}"><a href="{% url 'posts_create'%}">Create Post</a></li>{%endif%}
+    <li class="navbar-center" role="presentation" ><h1 class="text-right">MY BLOGGING WEBSITE</h1></li>
+<li class="navbar-right" role="presentation" class="col-sm-3  {%if clickedresult %}active{%endif%}">  <form method="GET"  action="{% url 'posts_search' %}">
+        <div class="form-group text-right">
+          <input type="text" name="search" class="form-control" placeholder="Search Post" value="{{request.GET.search}}" >
+        </div>
+
+      </form></li>
+</ul>
+
+
+ <link href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica+SC|Kalam" rel="stylesheet"/>
+
+
+    <title> {% block head_title %} Blog Website {% endblock head_title %}</title>
+    <!-- Latest compiled and minified CSS -->
+
+     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+</head>
+
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=315357952178424";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+{% include 'messages_display.html' %}
+
+
+<div class="container">
+    {% block content %}
+
+    {% endblock content %}
+
+
+
+</div>
+
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+</body>
+</html>
+
+
+
